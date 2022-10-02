@@ -28,6 +28,8 @@ public class Graph
     /// </summary>
     public void Display()
     {
+        Console.SetCursorPosition(0, 0);
+        
         int screenWidth = Console.WindowWidth / 2 - 1;
         int screenHeight = Console.WindowHeight - 1;
 
