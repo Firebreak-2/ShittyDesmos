@@ -7,7 +7,7 @@ public static class Program
         ConsoleKeyInfo lastPressedKey;
         
         var graph = new Graph();
-            
+        
         graph.DrawFunction(x => x, ConsoleColor.Green);
         graph.DrawFunction(x => x / 2, ConsoleColor.Red);
         graph.DrawFunction(x => x * x / 20, ConsoleColor.Blue);
@@ -18,6 +18,8 @@ public static class Program
 
             lastPressedKey = Console.ReadKey(true);
 
+            // -- handle camera movement --
+            
             const int movement = 2;
 
             switch (lastPressedKey.Key)
