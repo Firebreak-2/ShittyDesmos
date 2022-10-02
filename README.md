@@ -12,4 +12,4 @@ graph.DrawFunction(x => x * x / 20, ConsoleColor.Blue);
 graph.Display();
 ```
 Output:
-![A graph in the terminal showcasing the output of the drawn functions](https://i.imgur.com/MHDqTkZ.png)
+![A graph in the terminal showcasing the output of the drawn functions](https://i.imgur.com/AuNGHiE.png)
