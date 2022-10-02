@@ -48,6 +48,10 @@ public class Graph
                         toWrite = "- ";
                     }
                 }
+                else if (currentPoint.X == 0) // origin
+                {
+                    toWrite = "O";
+                }
                 
                 // checks if any function draws on the current pixel and uses its color
                 if (_drawList.TryFirst(f => BigDecimal.Abs(f.Key(currentPoint.X) - currentPoint.Y) < 1, out var func))
