@@ -4,7 +4,7 @@ namespace ShittyDesmos;
 
 public class Graph
 {
-    private Dictionary<Func<double, double>, ConsoleColor> _drawList = new();
+    private Dictionary<Func<double, BigDecimal>, ConsoleColor> _drawList = new();
     public Point ViewOffset = new((-Console.WindowWidth / 2 - 1) / 2, (-Console.WindowHeight - 1) / 2);
 
     /// <summary>
@@ -12,7 +12,7 @@ public class Graph
     /// </summary>
     /// <param name="function">The function to draw</param>
     /// <param name="color">The color of the line of this function</param>
-    public void DrawFunction(Func<double, double> function, ConsoleColor color = ConsoleColor.White)
+    public void DrawFunction(Func<double, BigDecimal> function, ConsoleColor color = ConsoleColor.White)
     {
         _drawList.Add(function, color);
     }
@@ -50,7 +50,7 @@ public class Graph
                 }
                 
                 // checks if any function draws on the current pixel and uses its color
-                if (_drawList.TryFirst(f => Math.Abs(f.Key(currentPoint.X) - currentPoint.Y) < 1, out var func))
+                if (_drawList.TryFirst(f => BigDecimal.Abs(f.Key(currentPoint.X) - currentPoint.Y) < 1, out var func))
                 {
                     Console.ForegroundColor = _drawList[func.Key];
                     toWrite = "# ";
@@ -65,10 +65,10 @@ public class Graph
         Console.ResetColor();
     }
 
-    public void Move(Point offest)
+    public void Move(Point offset)
     {
-        ViewOffset.X += offest.X;
-        ViewOffset.Y += offest.Y;
+        ViewOffset.X += offset.X;
+        ViewOffset.Y += offset.Y;
     }
 
     public void Move(int x, int y) => Move(new Point(x, y));
