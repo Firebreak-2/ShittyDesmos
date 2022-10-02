@@ -31,10 +31,10 @@ public static class Program
                     graph.Move(-movement, 0);
                     break;
                 case ConsoleKey.UpArrow:
-                    graph.Move(0, -movement);
+                    graph.Move(0, movement);
                     break;
                 case ConsoleKey.DownArrow:
-                    graph.Move(0, movement);
+                    graph.Move(0, -movement);
                     break;
             }
             

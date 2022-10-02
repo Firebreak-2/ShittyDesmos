@@ -25,7 +25,7 @@ public class Graph
         int screenWidth = Console.WindowWidth / 2 - 1;
         int screenHeight = Console.WindowHeight - 1;
 
-        for (int y = 0; y < screenHeight; y++)
+        for (int y = screenHeight - 1; y >= 0; y--)
         {
             for (int x = 0; x < screenWidth; x++)
             {
