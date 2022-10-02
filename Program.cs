@@ -1,4 +1,6 @@
-﻿namespace ShittyDesmos;
+﻿using System.Drawing;
+
+namespace ShittyDesmos;
 
 public static class Program
 {
@@ -11,6 +13,8 @@ public static class Program
         graph.DrawFunction(x => x, ConsoleColor.Green);
         graph.DrawFunction(x => x / 2, ConsoleColor.Red);
         graph.DrawFunction(x => x * x / 20, ConsoleColor.Blue);
+        
+        graph.DrawPoint(new Point(6, -6), ConsoleColor.Magenta);
         
         do
         {

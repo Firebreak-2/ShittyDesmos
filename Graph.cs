@@ -4,7 +4,8 @@ namespace ShittyDesmos;
 
 public class Graph
 {
-    private Dictionary<Func<double, BigDecimal>, ConsoleColor> _drawList = new();
+    private Dictionary<Func<double, BigDecimal>, ConsoleColor> _funcDrawList = new();
+    private Dictionary<Point, ConsoleColor> _pointDrawList = new();
     public Point ViewOffset = new((-Console.WindowWidth / 2 - 1) / 2, (-Console.WindowHeight - 1) / 2);
 
     /// <summary>
@@ -14,7 +15,12 @@ public class Graph
     /// <param name="color">The color of the line of this function</param>
     public void DrawFunction(Func<double, BigDecimal> function, ConsoleColor color = ConsoleColor.White)
     {
-        _drawList.Add(function, color);
+        _funcDrawList.Add(function, color);
+    }
+
+    public void DrawPoint(Point point, ConsoleColor color = ConsoleColor.White)
+    {
+        _pointDrawList.Add(point, color);
     }
 
     /// <summary>
@@ -54,10 +60,17 @@ public class Graph
                 }
                 
                 // checks if any function draws on the current pixel and uses its color
-                if (_drawList.TryFirst(f => BigDecimal.Abs(f.Key(currentPoint.X) - currentPoint.Y) < 1, out var func))
+                if (_funcDrawList.TryFirst(f => BigDecimal.Abs(f.Key(currentPoint.X) - currentPoint.Y) < 1, out var func))
                 {
-                    Console.ForegroundColor = _drawList[func.Key];
+                    Console.ForegroundColor = _funcDrawList[func.Key];
                     toWrite = "# ";
+                }
+                
+                // same but with points
+                if (_pointDrawList.TryGetValue(currentPoint, out var pointCol))
+                {
+                    Console.ForegroundColor = pointCol;
+                    toWrite = "()";
                 }
 
                 Console.Write(toWrite);
